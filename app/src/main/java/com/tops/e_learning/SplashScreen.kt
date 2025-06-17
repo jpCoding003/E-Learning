@@ -1,21 +1,21 @@
 package com.tops.e_learning
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import com.tops.e_learning.databinding.ActivityMainBinding
-import com.tops.e_learning.fragments.LoginFragment
+import com.tops.e_learning.databinding.ActivitySplashScreenBinding
 
-class MainActivity : AppCompatActivity() {
+class SplashScreen : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+   private lateinit var binding: ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -24,10 +24,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        supportFragmentManager?.commit {
-            setReorderingAllowed(true)
-            add<LoginFragment>(R.id.main_container)
-        }
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 3000)
     }
 }
