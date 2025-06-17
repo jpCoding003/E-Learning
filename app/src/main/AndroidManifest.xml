@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.ELearning"
         tools:targetApi="31">
-        <activity
-            android:name=".DashBoard"
-            android:exported="false" />
+
         <activity
             android:name=".SplashScreen"
             android:exported="true">

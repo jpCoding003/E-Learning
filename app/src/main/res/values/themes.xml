@@ -5,11 +5,20 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-<!--    <style name="Base.Theme.ELearning.SplashScreenRemove" parent="Base.Theme.ELearning">-->
-<!--        <item name="android:windowIsTranslucent">true</item>-->
-<!--    </style>-->
 
-<!--    <style name="Theme.ELearning" parent="Base.Theme.ELearning" >-->
-<!--        <item name="android:windowIsTranslucent">true</item>-->
-<!--    </style>-->
+    <style name="Base.Theme.ELearning.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Base.Theme.ELearning.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Base.Theme.ELearning.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!--    <style name="Base.Theme.ELearning.SplashScreenRemove" parent="Base.Theme.ELearning">-->
+    <!--        <item name="android:windowIsTranslucent">true</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="Theme.ELearning" parent="Base.Theme.ELearning" >-->
+    <!--        <item name="android:windowIsTranslucent">true</item>-->
+    <!--    </style>-->
 </resources>
