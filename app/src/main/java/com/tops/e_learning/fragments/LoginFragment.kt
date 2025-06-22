@@ -10,10 +10,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.tops.e_learning.DashBoardActivity
 import com.tops.e_learning.R
 import com.tops.e_learning.databinding.FragmentLoginBinding
 
-
+val IS_LOGIN = "IS_LOGIN"
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
@@ -44,13 +45,17 @@ class LoginFragment : Fragment() {
 
         binding.btnlogin.setOnClickListener {
 
-            val sharedPref = activity?.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+            val sharedPref = activity?.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)?: return@setOnClickListener
+            with(sharedPref.edit()){
+                this!!.putBoolean(IS_LOGIN,true)
+                    .apply()
+            }
             val email = sharedPref?.getString(EMAIL,null)
             val password = sharedPref?.getString(PASSWORD,null)
 
             if (validity()){
                 if (binding.etEmail.text.toString().equals(email) && binding.etPassword.text.toString().equals(password)) {
-                    val intent = Intent(context, DashBoard::class.java)
+                    val intent = Intent(context, DashBoardActivity::class.java)
                     startActivity(intent)
                 }else{
                     Toast.makeText(context, "Email Password Not Registered!!", Toast.LENGTH_LONG).show()
@@ -66,23 +71,26 @@ class LoginFragment : Fragment() {
         var isValid = true
         if (binding.etEmail.text.toString().isEmpty()){
             binding.etEmail.error = "*Require"
-            return false
+            isValid= false
         }
         else{
             binding.etEmail.error = null
+            isValid = true
         }
         if (binding.etPassword.text.toString().isEmpty()){
             binding.etPassword.error = "*Require"
-            return false
+            isValid= false
         }else{
             binding.etPassword.error = null
+            isValid = true
         }
 
         if (binding.etPassword.length()< 8){
             binding.etPassword.setError("*Min. size must 8 Char")
-            return false
+            isValid= false
         }else{
             binding.etPassword.error = null
+            isValid = true
         }
 
         //After All this validation

@@ -21,7 +21,6 @@ class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -69,33 +68,43 @@ class RegisterFragment : Fragment() {
         var isValid = true
         if (binding.etFirstname.text.toString().isEmpty()){
             binding.etFirstname.error = "Require"
-            return false
+//            return false
+            isValid = false
         }
         else{
             binding.etFirstname.error = null
+            isValid = true
         }
 
         if (binding.etLastname.text.toString().isEmpty()){
             binding.etLastname.error = "Require"
-            return false
+//            return falss
+            isValid = false
         }else{
             binding.etLastname.error = null
+            isValid = true
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text.toString()).matches()){
             binding.etEmail.error = "Enter Valid Email Address"
-            return false
+            isValid = false
         }else{
             binding.etEmail.error = null
+            isValid = true
         }
 
         if (binding.etpassword.length()< 8 || binding.etpassword.text.toString().isEmpty() ){
             binding.etpassword.setError("Min. size must 8 Char")
-            return false
-        }else if (binding.etpassword.text.toString().equals(binding.etConfirmPassword.text.toString())){
-            binding.etConfirmPassword.error = null
+            isValid = false
         }else{
-            binding.etConfirmPassword.error = "Password Did not Matched!!"
-            return false
+            binding.etpassword.error = null
+        }
+
+        if (binding.etpassword.text.toString() != binding.etConfirmPassword.text.toString()){
+            binding.etConfirmPassword.error =  "Password Did not Matched!!"
+            isValid = false
+        }else{
+            binding.etConfirmPassword.error = null
+            isValid = true
         }
 
         //After All this validation

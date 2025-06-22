@@ -1,5 +1,6 @@
 package com.tops.e_learning
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -24,10 +25,21 @@ class SplashScreen : AppCompatActivity() {
             insets
         }
 
+        val sharedPref = getSharedPreferences(getString(R.string.app_name),Context.MODE_PRIVATE)
+        val IS_LOGIN = "IS_LOGIN"
+        val isLogin= sharedPref?.getBoolean(IS_LOGIN,false)
+
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+
+            if (isLogin == true){
+                val intent = Intent(this, DashBoardActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }, 3000)
     }
 }
