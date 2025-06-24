@@ -32,7 +32,7 @@ class SplashScreen : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
 
             if (isLogin == true){
-                val intent = Intent(this, DashBoardActivity::class.java)
+                val intent = Intent(this, HomeScreenActivity::class.java)
                 startActivity(intent)
                 finish()
             }else {
