@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/nav_aboutUs"
         android:title="About Us"
-        android:icon="@drawable/icons8_about"/>
+        android:icon="@drawable/icons8_about"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/nav_contactUs"
         android:title="Contact Us"
-        android:icon="@drawable/icons8_contact_us_48"/>
+        android:icon="@drawable/icons8_contact_us_48"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/nav_logout"
         android:title="logout"
-        android:icon="@android:drawable/ic_lock_power_off"/>
+        android:icon="@android:drawable/ic_lock_power_off"
+        app:showAsAction="never"/>
 
 </menu>

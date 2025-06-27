@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.tops.e_learning.DashBoardActivity
+import com.tops.e_learning.HomeScreenActivity
 import com.tops.e_learning.R
 import com.tops.e_learning.databinding.FragmentLoginBinding
 
@@ -42,7 +42,6 @@ class LoginFragment : Fragment() {
             }
         }
 
-
         binding.btnlogin.setOnClickListener {
 
             val sharedPref = activity?.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)?: return@setOnClickListener
@@ -55,7 +54,7 @@ class LoginFragment : Fragment() {
 
             if (validity()){
                 if (binding.etEmail.text.toString().equals(email) && binding.etPassword.text.toString().equals(password)) {
-                    val intent = Intent(context, DashBoardActivity::class.java)
+                    val intent = Intent(context, HomeScreenActivity::class.java)
                     startActivity(intent)
                 }else{
                     Toast.makeText(context, "Email Password Not Registered!!", Toast.LENGTH_LONG).show()

@@ -9,6 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import androidx.navigation.findNavController
 import com.tops.e_learning.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
@@ -32,9 +36,7 @@ class SplashScreen : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
 
             if (isLogin == true){
-                val intent = Intent(this, HomeScreenActivity::class.java)
-                startActivity(intent)
-                finish()
+                findNavController(R.id.homeFragment)
             }else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
