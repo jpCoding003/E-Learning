@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.fragment.findNavController
 import com.tops.e_learning.R
 import com.tops.e_learning.databinding.FragmentRegisterBinding
 
@@ -44,11 +45,7 @@ class RegisterFragment : Fragment() {
                     apply()
                 }
 
-                activity?.supportFragmentManager?.commit {
-                    setReorderingAllowed(true)
-                    replace<LoginFragment>(R.id.main_container)
-                    Toast.makeText(context, "New User Registered", Toast.LENGTH_SHORT).show()
-                }
+               findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
             else{
                 Toast.makeText(context, "Enter Proper Details", Toast.LENGTH_SHORT).show()
@@ -56,10 +53,7 @@ class RegisterFragment : Fragment() {
         }
 
         binding.btnlogin.setOnClickListener {
-            activity?.supportFragmentManager?.commit {
-                setReorderingAllowed(true)
-                replace<LoginFragment>(R.id.main_container)
-            }
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
 

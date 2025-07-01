@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.fragment.findNavController
 import com.tops.e_learning.HomeScreenActivity
 import com.tops.e_learning.R
 import com.tops.e_learning.databinding.FragmentLoginBinding
@@ -36,10 +37,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnRegister.setOnClickListener {
-            activity?.supportFragmentManager?.commit {
-                setReorderingAllowed(true)
-                replace<RegisterFragment>(R.id.main_container)
-            }
+           findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
         binding.btnlogin.setOnClickListener {
@@ -54,8 +52,7 @@ class LoginFragment : Fragment() {
 
             if (validity()){
                 if (binding.etEmail.text.toString().equals(email) && binding.etPassword.text.toString().equals(password)) {
-                    val intent = Intent(context, HomeScreenActivity::class.java)
-                    startActivity(intent)
+                   findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }else{
                     Toast.makeText(context, "Email Password Not Registered!!", Toast.LENGTH_LONG).show()
                 }

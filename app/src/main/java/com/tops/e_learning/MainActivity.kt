@@ -1,5 +1,6 @@
 package com.tops.e_learning
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.navigation.findNavController
 import com.tops.e_learning.databinding.ActivityMainBinding
 import com.tops.e_learning.fragments.LoginFragment
 
@@ -24,9 +26,18 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        supportFragmentManager?.commit {
-            setReorderingAllowed(true)
-            add<LoginFragment>(R.id.main_container)
+        binding.navView.post {
+            val navController = binding.navView.findNavController()
+
+            val sharedPref = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+            val isLogin = sharedPref.getBoolean("IS_LOGIN", false)
+
+            if (isLogin) {
+                navController.navigate(R.id.homeFragment)
+            } else {
+                // No need to navigate manually if loginFragment is already startDestination
+                // navController.navigate(R.id.loginFragment)
+            }
         }
 
     }

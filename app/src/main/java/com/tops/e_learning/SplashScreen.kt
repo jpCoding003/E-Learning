@@ -29,19 +29,14 @@ class SplashScreen : AppCompatActivity() {
             insets
         }
 
-        val sharedPref = getSharedPreferences(getString(R.string.app_name),Context.MODE_PRIVATE)
-        val IS_LOGIN = "IS_LOGIN"
-        val isLogin= sharedPref?.getBoolean(IS_LOGIN,false)
+//        val sharedPref = getSharedPreferences(getString(R.string.app_name),Context.MODE_PRIVATE)
+//        val IS_LOGIN = "IS_LOGIN"
+//        val isLogin= sharedPref?.getBoolean(IS_LOGIN,false)
 
         Handler(Looper.getMainLooper()).postDelayed({
-
-            if (isLogin == true){
-                findNavController(R.id.homeFragment)
-            }else {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }, 3000)
     }
 }
