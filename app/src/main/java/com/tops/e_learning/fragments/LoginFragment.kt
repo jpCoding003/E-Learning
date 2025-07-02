@@ -1,17 +1,13 @@
 package com.tops.e_learning.fragments
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import androidx.navigation.fragment.findNavController
-import com.tops.e_learning.HomeScreenActivity
 import com.tops.e_learning.R
 import com.tops.e_learning.databinding.FragmentLoginBinding
 
@@ -47,11 +43,11 @@ class LoginFragment : Fragment() {
                 this!!.putBoolean(IS_LOGIN,true)
                     .apply()
             }
-            val email = sharedPref?.getString(EMAIL,null)
-            val password = sharedPref?.getString(PASSWORD,null)
+            val email = sharedPref.getString(EMAIL,null)
+            val password = sharedPref.getString(PASSWORD,null)
 
-            if (validity()){
-                if (binding.etEmail.text.toString().equals(email) && binding.etPassword.text.toString().equals(password)) {
+            if (validity()==true){
+                if (binding.etEmail.text.toString() == email && binding.etPassword.text.toString() == password) {
                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }else{
                     Toast.makeText(context, "Email Password Not Registered!!", Toast.LENGTH_LONG).show()

@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:hint="Email"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
@@ -67,7 +68,6 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
-                    android:text ="Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -86,7 +86,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
-                    android:text="Password"
+                    android:hint="Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"/>

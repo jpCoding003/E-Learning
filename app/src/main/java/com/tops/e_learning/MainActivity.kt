@@ -27,13 +27,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.navView.post {
-            val navController = binding.navView.findNavController()
 
             val sharedPref = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
             val isLogin = sharedPref.getBoolean("IS_LOGIN", false)
 
-            if (isLogin) {
-                navController.navigate(R.id.homeFragment)
+            if (isLogin== false) {
+                supportFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    add<LoginFragment>(R.id.nav_view)
+                }
+//                findNavController(R.id.nav_view).navigate(R.id.loginFragment)
             } else {
                 // No need to navigate manually if loginFragment is already startDestination
                 // navController.navigate(R.id.loginFragment)
