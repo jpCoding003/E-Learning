@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.navigation.fragment.findNavController
@@ -34,6 +35,8 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity).supportActionBar?.hide()
 
         binding.btnRegister.setOnClickListener {
             if (validity()){
@@ -62,7 +65,6 @@ class RegisterFragment : Fragment() {
         var isValid = true
         if (binding.etFirstname.text.toString().isEmpty()){
             binding.etFirstname.error = "Require"
-//            return false
             isValid = false
         }
         else{
@@ -72,7 +74,6 @@ class RegisterFragment : Fragment() {
 
         if (binding.etLastname.text.toString().isEmpty()){
             binding.etLastname.error = "Require"
-//            return falss
             isValid = false
         }else{
             binding.etLastname.error = null
@@ -85,14 +86,12 @@ class RegisterFragment : Fragment() {
             binding.etEmail.error = null
             isValid = true
         }
-
         if (binding.etpassword.length()< 8 || binding.etpassword.text.toString().isEmpty() ){
             binding.etpassword.setError("Min. size must 8 Char")
             isValid = false
         }else{
             binding.etpassword.error = null
         }
-
         if (binding.etpassword.text.toString() != binding.etConfirmPassword.text.toString()){
             binding.etConfirmPassword.error =  "Password Did not Matched!!"
             isValid = false
@@ -101,8 +100,6 @@ class RegisterFragment : Fragment() {
             isValid = true
         }
 
-        //After All this validation
-        //Will return True
         return isValid
     }
 

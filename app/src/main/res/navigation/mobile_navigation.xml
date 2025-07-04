@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_playQuizFragment"
+            app:destination="@id/playQuizFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_readQuestionsFragment"
+            app:destination="@id/readQuestionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -35,5 +41,15 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/playQuizFragment"
+        android:name="com.tops.e_learning.fragments.PlayQuizFragment"
+        android:label="fragment_play_quiz"
+        tools:layout="@layout/fragment_play_quiz" />
+    <fragment
+        android:id="@+id/readQuestionsFragment"
+        android:name="com.tops.e_learning.fragments.ReadQuestionsFragment"
+        android:label="fragment_read_questions"
+        tools:layout="@layout/fragment_read_questions" />
 
 </navigation>

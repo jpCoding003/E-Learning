@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.tops.e_learning.R
 import com.tops.e_learning.adapter.DashboardGridAdapter
@@ -17,8 +18,10 @@ import com.tops.e_learning.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
    private lateinit var binding: FragmentHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.show()
         setHasOptionsMenu(true)
     }
 
@@ -26,12 +29,13 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Dashboard"
 
         val dashboardOptions = listOf("Read Questions", "Play Quiz")
         val adapter = DashboardGridAdapter(requireContext(), dashboardOptions)
@@ -59,8 +63,9 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
 
         }
-    }
 
+
+    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -83,8 +88,4 @@ class HomeFragment : Fragment() {
         return true
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
 }
