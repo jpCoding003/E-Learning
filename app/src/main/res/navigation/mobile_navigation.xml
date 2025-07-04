@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment2"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -50,6 +53,46 @@
         android:id="@+id/readQuestionsFragment"
         android:name="com.tops.e_learning.fragments.ReadQuestionsFragment"
         android:label="fragment_read_questions"
-        tools:layout="@layout/fragment_read_questions" />
+        tools:layout="@layout/fragment_read_questions" >
+        <action
+            android:id="@+id/action_readQuestionsFragment_to_SQLQuestionsFragment"
+            app:destination="@id/SQLQuestionsFragment" />
+        <action
+            android:id="@+id/action_readQuestionsFragment_to_fundamentalsFragment"
+            app:destination="@id/fundamentalsFragment" />
+        <action
+            android:id="@+id/action_readQuestionsFragment_to_hrQuestionsFragment"
+            app:destination="@id/hrQuestionsFragment" />
+        <action
+            android:id="@+id/action_readQuestionsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SQLQuestionsFragment"
+        android:name="com.tops.e_learning.fragments.SQLQuestionsFragment"
+        android:label="fragment_s_q_l_questions"
+        tools:layout="@layout/fragment_s_q_l_questions" >
+        <action
+            android:id="@+id/action_SQLQuestionsFragment_to_readQuestionsFragment"
+            app:destination="@id/readQuestionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fundamentalsFragment"
+        android:name="com.tops.e_learning.fragments.FundamentalsFragment"
+        android:label="fragment_fundamentals"
+        tools:layout="@layout/fragment_fundamentals" >
+        <action
+            android:id="@+id/action_fundamentalsFragment_to_readQuestionsFragment"
+            app:destination="@id/readQuestionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hrQuestionsFragment"
+        android:name="com.tops.e_learning.fragments.HrQuestionsFragment"
+        android:label="fragment_hr_questions"
+        tools:layout="@layout/fragment_hr_questions" >
+        <action
+            android:id="@+id/action_hrQuestionsFragment_to_readQuestionsFragment"
+            app:destination="@id/readQuestionsFragment" />
+    </fragment>
 
 </navigation>

@@ -29,6 +29,7 @@ class DashboardGridAdapter(private val context: Context, private val items: List
         }
 
         binding.gridText.text = items[position]
+
         return view
     }
 }

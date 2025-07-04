@@ -13,7 +13,7 @@
         android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#FF9800"
+        android:background="@color/DrakYellowToolbar"
         android:elevation="4dp"
         android:theme="@style/Base.Theme.ELearning.PopupOverlay" />
 

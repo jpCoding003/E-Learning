@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ReadQuestionsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ReadQuestionsFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/lightVioletHOme"
+    android:padding="52dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:backgroundTint="@color/lightYellowGrid"
+        app:cornerRadius="17dp"
+        app:icon="@drawable/outline_arrow_back"
+        app:iconSize="40dp"
+        app:iconGravity="start"
+        android:layout_marginBottom="19dp"/>
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFundamentals"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:text="Fundamen-tals"
+        android:textSize="35sp"
+        app:cornerRadius="17dp"
+        app:backgroundTint="@color/lightYellowGrid"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSQL"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:text="SQL"
+        android:layout_weight="1"
+        android:textSize="35sp"
+        app:cornerRadius="17dp"
+        app:backgroundTint="@color/lightYellowGrid"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHrQues"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:text="HR Questions"
+        android:layout_weight="1"
+        android:textSize="35sp"
+        app:cornerRadius="17dp"
+        app:backgroundTint="@color/lightYellowGrid"/>
+
+</LinearLayout>

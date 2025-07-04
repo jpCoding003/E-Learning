@@ -39,7 +39,7 @@ class RegisterFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.hide()
 
         binding.btnRegister.setOnClickListener {
-            if (validity()){
+            if (validity()== true){
                 val sharedpref = activity?.getSharedPreferences(getString(R.string.app_name),Context.MODE_PRIVATE)?: return@setOnClickListener
 
                 with(sharedpref.edit()){

@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_orange">#F8B249</color>
+    <color name="DrakYellowToolbar">#FF9800</color>
+    <color name="lightYellowGrid">#EBB469</color>
+    <color name="lightVioletHOme">#985FF1</color>
 </resources>

@@ -6,10 +6,10 @@
     android:gravity="center"
     android:padding="16dp"
     android:layout_margin="8dp"
-    android:background="#F8B249"
+    android:background="@color/lightYellowGrid"
     android:elevation="6dp"
-    android:clickable="true"
-    android:focusable="true">
+    android:clickable="false"
+    android:focusable="false">
 
     <TextView
         android:id="@+id/gridText"
