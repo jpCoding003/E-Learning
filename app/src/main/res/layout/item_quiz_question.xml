@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:gravity="center"
-    tools:context=".fragments.PlayQuizFragment">
+    android:padding="12dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -24,61 +21,44 @@
                 android:id="@+id/tvQuestion"
                 android:textStyle="bold"
                 android:textSize="28sp"
-                android:layout_marginTop="15dp"
                 android:paddingStart="9dp"
                 android:text="Question"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <com.google.android.material.button.MaterialButton
-
-                android:id="@+id/tvoption1"
+            <TextView android:id="@+id/tvoption1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option.."
                 android:layout_marginTop="15dp"
-                app:cornerRadius="18dp"
-                android:backgroundTint="#5D97D9"
                 android:textSize="20dp"
                 android:paddingStart="9dp"
                 style="@style/OptionStyle"/>
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/tvoption2"
+            <TextView android:id="@+id/tvoption2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option.."
                 android:layout_marginTop="15dp"
-                app:cornerRadius="18dp"
-                android:backgroundTint="#5D97D9"
                 android:textSize="20dp"
                 android:paddingStart="9dp"
                 style="@style/OptionStyle"/>
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/tvoption3"
+            <TextView android:id="@+id/tvoption3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option.."
                 android:layout_marginTop="15dp"
-                app:cornerRadius="18dp"
-                android:backgroundTint="#5D97D9"
                 android:textSize="20dp"
                 android:paddingStart="9dp"
                 style="@style/OptionStyle"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/tvoption4"
+            <TextView android:id="@+id/tvoption4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="option.."
                 android:layout_marginTop="15dp"
-                app:cornerRadius="18dp"
-                android:backgroundTint="#5D97D9"
                 android:textSize="20dp"
                 android:paddingStart="9dp"
                 style="@style/OptionStyle"/>
-
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

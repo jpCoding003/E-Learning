@@ -5,56 +5,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.tops.e_learning.R
+import com.tops.e_learning.ViewModels.QuizViewModel
+import com.tops.e_learning.databinding.FragmentPlayQuizBinding
+import com.tops.e_learning.model.PlayQuizModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PlayQuizFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PlayQuizFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: FragmentPlayQuizBinding
+    private  val quizviewmodel: QuizViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play_quiz, container, false)
+        binding = FragmentPlayQuizBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PlayQuizFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PlayQuizFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        quizviewmodel.questions.observe(viewLifecycleOwner, Observer<PlayQuizModel?>{
+            question->
+            if (question == null){
+                showScore()
+            }else{
+                binding.tvQuestion.setText(question.Question)
+                binding.tvoption1.setText(question.Option1)
+                binding.tvoption2.setText(question.Option2)
+                binding.tvoption3.setText(question.Option3)
+                binding.tvoption4.setText(question.Option4)
             }
+        })
+
+        quizviewmodel.loadnextquestion()
+
+        binding.tvoption1.setOnClickListener { optionClicked(1) }
+        binding.tvoption2.setOnClickListener { optionClicked(2) }
+        binding.tvoption3.setOnClickListener { optionClicked(3) }
+        binding.tvoption4.setOnClickListener { optionClicked(4) }
     }
+
+    private fun optionClicked(selectedoption: Int){
+        val correctopt = quizviewmodel.checkanswer(selectedoption)
+        quizviewmodel.loadnextquestion()
+    }
+
+    private fun showScore() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Quiz Finished 🎉")
+            .setMessage("Your Score: ${quizviewmodel.getscore()} / ${quizviewmodel.quizquestions.size}")
+            .setPositiveButton("OK") { _, _ -> requireActivity().onBackPressedDispatcher.onBackPressed() }
+            .show()
+    }
+
+
 }
+
+
