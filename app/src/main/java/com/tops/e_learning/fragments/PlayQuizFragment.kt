@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -57,6 +58,11 @@ class PlayQuizFragment : Fragment() {
 
     private fun optionClicked(selectedoption: Int){
         val correctopt = quizviewmodel.checkanswer(selectedoption)
+        if (correctopt){
+            Toast.makeText(requireActivity(),"Correct",Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireActivity(),"InCorrect",Toast.LENGTH_SHORT).show()
+        }
         quizviewmodel.loadnextquestion()
     }
 
